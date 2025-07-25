@@ -1,0 +1,10 @@
+data/
+/data/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+*.csv
