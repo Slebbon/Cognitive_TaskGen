@@ -8,3 +8,9 @@ __pycache__/
 *.pdb
 
 *.csv
+
+*.venv
+.venv/
+*.cfg
+
+*.env
