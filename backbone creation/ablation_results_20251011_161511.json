@@ -1,0 +1,589 @@
+{
+  "metadata": {
+    "date": "2025-10-11T16:15:11.272804",
+    "n_samples_train": 9600,
+    "n_samples_test": 2400,
+    "n_folds": 3,
+    "random_state": 42,
+    "rf_params": {
+      "n_estimators": 100,
+      "max_depth": 20,
+      "min_samples_split": 20,
+      "min_samples_leaf": 10,
+      "max_features": "sqrt",
+      "random_state": 42,
+      "n_jobs": -1,
+      "class_weight": "balanced",
+      "bootstrap": true,
+      "oob_score": false,
+      "verbose": 0
+    }
+  },
+  "baseline": {
+    "n_features": 53,
+    "features": [
+      "trigram_diversity",
+      "yules_k",
+      "token_burstiness",
+      "char_trigram_entropy",
+      "avg_tree_depth",
+      "max_tree_depth",
+      "avg_dependency_distance",
+      "uppercase_ratio",
+      "whitespace_ratio",
+      "unique_char_count",
+      "comma_ratio",
+      "period_ratio",
+      "question_ratio",
+      "exclamation_ratio",
+      "semicolon_ratio",
+      "colon_ratio",
+      "quote_ratio",
+      "sentiment_polarity",
+      "sentiment_subjectivity",
+      "sentiment_polarity_variance",
+      "neutral_sentence_ratio",
+      "positive_word_ratio",
+      "negative_word_ratio",
+      "pos_ratio_DET",
+      "pos_ratio_ADP",
+      "pos_ratio_AUX",
+      "pos_ratio_CCONJ",
+      "pos_ratio_PART",
+      "pos_ratio_NUM",
+      "pos_row_entropy_weighted",
+      "function_to_content_rate",
+      "noun_verb_alternation_rate",
+      "content_function_ratio",
+      "noun_verb_ratio",
+      "adj_adv_ratio",
+      "verbs_per_100_tok",
+      "nouns_per_100_tok",
+      "adj_per_100_tok",
+      "adv_per_100_tok",
+      "pron_per_100_tok",
+      "punct_per_100_tok",
+      "mean_nouns_per_sent",
+      "mean_verbs_per_sent",
+      "mean_adjs_per_sent",
+      "mean_advs_per_sent",
+      "unique_upos_per_sent_mean",
+      "max_runlen_NOUN",
+      "max_runlen_PUNCT",
+      "avg_sentence_length",
+      "sentence_length_std",
+      "tokens_per_sentence_mean",
+      "prop_sents_with_verb",
+      "n_sentences_doc"
+    ],
+    "cv_f1_mean": 0.8354593952256804,
+    "cv_f1_std": 0.006582580515500855,
+    "test_f1": 0.834419817470665,
+    "test_roc_auc": 0.9267479166666667
+  },
+  "backbone": {
+    "n_features": 8,
+    "features": [
+      "trigram_diversity",
+      "yules_k",
+      "comma_ratio",
+      "colon_ratio",
+      "pos_ratio_NUM",
+      "verbs_per_100_tok",
+      "sentence_length_std",
+      "n_sentences_doc"
+    ],
+    "cv_f1_mean": 0.7941776200710366,
+    "test_f1": 0.7895637296834902,
+    "test_roc_auc": 0.8860909722222221,
+    "feature_reduction_pct": 84.90566037735849,
+    "f1_retention_pct": 94.62427822925578
+  },
+  "hierarchical_ablation": {
+    "lexical_diversity": {
+      "f1_drop": 0.03596478780351564,
+      "f1_drop_pct": 4.304791831780235,
+      "n_features": 2,
+      "features": [
+        "trigram_diversity",
+        "yules_k"
+      ]
+    },
+    "ngram_patterns": {
+      "f1_drop": 0.00797753978115956,
+      "f1_drop_pct": 0.9548686419409538,
+      "n_features": 2,
+      "features": [
+        "token_burstiness",
+        "char_trigram_entropy"
+      ]
+    },
+    "syntactic": {
+      "f1_drop": 0.0024240851535274333,
+      "f1_drop_pct": 0.2901499662796445,
+      "n_features": 3,
+      "features": [
+        "avg_tree_depth",
+        "max_tree_depth",
+        "avg_dependency_distance"
+      ]
+    },
+    "character_level": {
+      "f1_drop": 0.004898302096920548,
+      "f1_drop_pct": 0.5863004384069896,
+      "n_features": 3,
+      "features": [
+        "uppercase_ratio",
+        "whitespace_ratio",
+        "unique_char_count"
+      ]
+    },
+    "punctuation": {
+      "f1_drop": 0.010789767992958388,
+      "f1_drop_pct": 1.2914772464847053,
+      "n_features": 7,
+      "features": [
+        "comma_ratio",
+        "period_ratio",
+        "question_ratio",
+        "exclamation_ratio",
+        "semicolon_ratio",
+        "colon_ratio",
+        "quote_ratio"
+      ]
+    },
+    "sentiment": {
+      "f1_drop": 0.003988293299849399,
+      "f1_drop_pct": 0.47737727562116317,
+      "n_features": 6,
+      "features": [
+        "sentiment_polarity",
+        "sentiment_subjectivity",
+        "sentiment_polarity_variance",
+        "neutral_sentence_ratio",
+        "positive_word_ratio",
+        "negative_word_ratio"
+      ]
+    },
+    "pos_ratios": {
+      "f1_drop": 0.009756557030112023,
+      "f1_drop_pct": 1.1678074465218635,
+      "n_features": 7,
+      "features": [
+        "pos_ratio_DET",
+        "pos_ratio_ADP",
+        "pos_ratio_AUX",
+        "pos_ratio_CCONJ",
+        "pos_ratio_PART",
+        "pos_ratio_NUM",
+        "pos_row_entropy_weighted"
+      ]
+    },
+    "pos_derived": {
+      "f1_drop": 0.008021929428747576,
+      "f1_drop_pct": 0.9601818442152577,
+      "n_features": 18,
+      "features": [
+        "function_to_content_rate",
+        "noun_verb_alternation_rate",
+        "content_function_ratio",
+        "noun_verb_ratio",
+        "adj_adv_ratio",
+        "verbs_per_100_tok",
+        "nouns_per_100_tok",
+        "adj_per_100_tok",
+        "adv_per_100_tok",
+        "pron_per_100_tok",
+        "punct_per_100_tok",
+        "mean_nouns_per_sent",
+        "mean_verbs_per_sent",
+        "mean_adjs_per_sent",
+        "mean_advs_per_sent",
+        "unique_upos_per_sent_mean",
+        "max_runlen_NOUN",
+        "max_runlen_PUNCT"
+      ]
+    },
+    "sentence_stats": {
+      "f1_drop": 0.009803055417124118,
+      "f1_drop_pct": 1.1733730535732434,
+      "n_features": 4,
+      "features": [
+        "avg_sentence_length",
+        "sentence_length_std",
+        "tokens_per_sentence_mean",
+        "prop_sents_with_verb"
+      ]
+    },
+    "document_level": {
+      "f1_drop": 0.004145844595733639,
+      "f1_drop_pct": 0.4962353190861817,
+      "n_features": 1,
+      "features": [
+        "n_sentences_doc"
+      ]
+    }
+  },
+  "redundant_pairs": [
+    {
+      "feature1": "content_function_ratio",
+      "feature2": "nouns_per_100_tok",
+      "correlation": 0.8660933769940015,
+      "abs_correlation": 0.8660933769940015
+    },
+    {
+      "feature1": "yules_k",
+      "feature2": "trigram_diversity",
+      "correlation": -0.7949138790579392,
+      "abs_correlation": 0.7949138790579392
+    },
+    {
+      "feature1": "prop_sents_with_verb",
+      "feature2": "function_to_content_rate",
+      "correlation": 0.7924907249193346,
+      "abs_correlation": 0.7924907249193346
+    },
+    {
+      "feature1": "mean_advs_per_sent",
+      "feature2": "adv_per_100_tok",
+      "correlation": 0.7830764971859383,
+      "abs_correlation": 0.7830764971859383
+    }
+  ],
+  "rfe_trajectory": [
+    {
+      "iteration": 0,
+      "n_features": 53,
+      "f1_mean": 0.8354593952256804,
+      "removed_feature": null
+    },
+    {
+      "iteration": 1,
+      "n_features": 52,
+      "f1_mean": 0.8343675504781262,
+      "removed_feature": "adv_per_100_tok"
+    },
+    {
+      "iteration": 2,
+      "n_features": 51,
+      "f1_mean": 0.8348939722277672,
+      "removed_feature": "noun_verb_alternation_rate"
+    },
+    {
+      "iteration": 3,
+      "n_features": 50,
+      "f1_mean": 0.8338658648957367,
+      "removed_feature": "mean_advs_per_sent"
+    },
+    {
+      "iteration": 4,
+      "n_features": 49,
+      "f1_mean": 0.8358763858307566,
+      "removed_feature": "avg_dependency_distance"
+    },
+    {
+      "iteration": 5,
+      "n_features": 48,
+      "f1_mean": 0.8368029810796364,
+      "removed_feature": "question_ratio"
+    },
+    {
+      "iteration": 6,
+      "n_features": 47,
+      "f1_mean": 0.8342102644397978,
+      "removed_feature": "avg_tree_depth"
+    },
+    {
+      "iteration": 7,
+      "n_features": 46,
+      "f1_mean": 0.831635470610247,
+      "removed_feature": "punct_per_100_tok"
+    },
+    {
+      "iteration": 8,
+      "n_features": 45,
+      "f1_mean": 0.8322125391843632,
+      "removed_feature": "adj_per_100_tok"
+    },
+    {
+      "iteration": 9,
+      "n_features": 44,
+      "f1_mean": 0.8343816808448681,
+      "removed_feature": "pos_ratio_DET"
+    },
+    {
+      "iteration": 10,
+      "n_features": 43,
+      "f1_mean": 0.8313367578742779,
+      "removed_feature": "noun_verb_ratio"
+    },
+    {
+      "iteration": 11,
+      "n_features": 42,
+      "f1_mean": 0.8330799543188938,
+      "removed_feature": "pos_ratio_ADP"
+    },
+    {
+      "iteration": 12,
+      "n_features": 41,
+      "f1_mean": 0.8333519788352494,
+      "removed_feature": "tokens_per_sentence_mean"
+    },
+    {
+      "iteration": 13,
+      "n_features": 40,
+      "f1_mean": 0.834378477407656,
+      "removed_feature": "function_to_content_rate"
+    },
+    {
+      "iteration": 14,
+      "n_features": 39,
+      "f1_mean": 0.8320616598637586,
+      "removed_feature": "avg_sentence_length"
+    },
+    {
+      "iteration": 15,
+      "n_features": 38,
+      "f1_mean": 0.8339414111709066,
+      "removed_feature": "sentiment_polarity"
+    },
+    {
+      "iteration": 16,
+      "n_features": 37,
+      "f1_mean": 0.8340946068345522,
+      "removed_feature": "sentiment_polarity_variance"
+    },
+    {
+      "iteration": 17,
+      "n_features": 36,
+      "f1_mean": 0.8325467585913083,
+      "removed_feature": "semicolon_ratio"
+    },
+    {
+      "iteration": 18,
+      "n_features": 35,
+      "f1_mean": 0.8325798976708215,
+      "removed_feature": "prop_sents_with_verb"
+    },
+    {
+      "iteration": 19,
+      "n_features": 34,
+      "f1_mean": 0.828829942349215,
+      "removed_feature": "max_tree_depth"
+    },
+    {
+      "iteration": 20,
+      "n_features": 33,
+      "f1_mean": 0.8300619692746102,
+      "removed_feature": "pos_ratio_CCONJ"
+    },
+    {
+      "iteration": 21,
+      "n_features": 32,
+      "f1_mean": 0.8359316235030759,
+      "removed_feature": "unique_upos_per_sent_mean"
+    },
+    {
+      "iteration": 22,
+      "n_features": 31,
+      "f1_mean": 0.8327408820611145,
+      "removed_feature": "negative_word_ratio"
+    },
+    {
+      "iteration": 23,
+      "n_features": 30,
+      "f1_mean": 0.830824396231146,
+      "removed_feature": "sentiment_subjectivity"
+    },
+    {
+      "iteration": 24,
+      "n_features": 29,
+      "f1_mean": 0.8309371917973146,
+      "removed_feature": "quote_ratio"
+    },
+    {
+      "iteration": 25,
+      "n_features": 28,
+      "f1_mean": 0.8300190474846908,
+      "removed_feature": "mean_nouns_per_sent"
+    },
+    {
+      "iteration": 26,
+      "n_features": 27,
+      "f1_mean": 0.8309691729526233,
+      "removed_feature": "pron_per_100_tok"
+    },
+    {
+      "iteration": 27,
+      "n_features": 26,
+      "f1_mean": 0.8273674158209047,
+      "removed_feature": "mean_adjs_per_sent"
+    },
+    {
+      "iteration": 28,
+      "n_features": 25,
+      "f1_mean": 0.8275409128011205,
+      "removed_feature": "mean_verbs_per_sent"
+    },
+    {
+      "iteration": 29,
+      "n_features": 24,
+      "f1_mean": 0.8280558286836159,
+      "removed_feature": "content_function_ratio"
+    },
+    {
+      "iteration": 30,
+      "n_features": 23,
+      "f1_mean": 0.8261508300016699,
+      "removed_feature": "char_trigram_entropy"
+    },
+    {
+      "iteration": 31,
+      "n_features": 22,
+      "f1_mean": 0.824502946743403,
+      "removed_feature": "unique_char_count"
+    },
+    {
+      "iteration": 32,
+      "n_features": 21,
+      "f1_mean": 0.8257476552585192,
+      "removed_feature": "max_runlen_PUNCT"
+    },
+    {
+      "iteration": 33,
+      "n_features": 20,
+      "f1_mean": 0.8285792190677199,
+      "removed_feature": "pos_ratio_PART"
+    },
+    {
+      "iteration": 34,
+      "n_features": 19,
+      "f1_mean": 0.8263958281248546,
+      "removed_feature": "nouns_per_100_tok"
+    },
+    {
+      "iteration": 35,
+      "n_features": 18,
+      "f1_mean": 0.8236810447445628,
+      "removed_feature": "period_ratio"
+    },
+    {
+      "iteration": 36,
+      "n_features": 17,
+      "f1_mean": 0.8246607654789132,
+      "removed_feature": "max_runlen_NOUN"
+    },
+    {
+      "iteration": 37,
+      "n_features": 16,
+      "f1_mean": 0.8251035358720133,
+      "removed_feature": "neutral_sentence_ratio"
+    },
+    {
+      "iteration": 38,
+      "n_features": 15,
+      "f1_mean": 0.8242086432951093,
+      "removed_feature": "pos_ratio_AUX"
+    },
+    {
+      "iteration": 39,
+      "n_features": 14,
+      "f1_mean": 0.822374181517315,
+      "removed_feature": "adj_adv_ratio"
+    },
+    {
+      "iteration": 40,
+      "n_features": 13,
+      "f1_mean": 0.8172825138954618,
+      "removed_feature": "uppercase_ratio"
+    },
+    {
+      "iteration": 41,
+      "n_features": 12,
+      "f1_mean": 0.8165526650112428,
+      "removed_feature": "positive_word_ratio"
+    },
+    {
+      "iteration": 42,
+      "n_features": 11,
+      "f1_mean": 0.8117697174903116,
+      "removed_feature": "whitespace_ratio"
+    },
+    {
+      "iteration": 43,
+      "n_features": 10,
+      "f1_mean": 0.8059730340974601,
+      "removed_feature": "pos_row_entropy_weighted"
+    },
+    {
+      "iteration": 44,
+      "n_features": 9,
+      "f1_mean": 0.8025773937933472,
+      "removed_feature": "token_burstiness"
+    },
+    {
+      "iteration": 45,
+      "n_features": 8,
+      "f1_mean": 0.7941776200710366,
+      "removed_feature": "exclamation_ratio"
+    },
+    {
+      "iteration": 46,
+      "n_features": 7,
+      "f1_mean": 0.7869990293865268,
+      "removed_feature": "n_sentences_doc"
+    }
+  ],
+  "cumulative_trajectory": [
+    {
+      "n_features": 1,
+      "f1_mean": 0.6606591376128655,
+      "improvement": 0.6606591376128655
+    },
+    {
+      "n_features": 4,
+      "f1_mean": 0.740864736541726,
+      "improvement": 0.08020559892886048
+    },
+    {
+      "n_features": 7,
+      "f1_mean": 0.7743437895412334,
+      "improvement": 0.033479052999507375
+    },
+    {
+      "n_features": 10,
+      "f1_mean": 0.7997492471584492,
+      "improvement": 0.0254054576172158
+    },
+    {
+      "n_features": 13,
+      "f1_mean": 0.8059291990149527,
+      "improvement": 0.006179951856503552
+    },
+    {
+      "n_features": 16,
+      "f1_mean": 0.8130829083606708,
+      "improvement": 0.007153709345718018
+    },
+    {
+      "n_features": 19,
+      "f1_mean": 0.8192092499575198,
+      "improvement": 0.006126341596848994
+    },
+    {
+      "n_features": 22,
+      "f1_mean": 0.8213928474559379,
+      "improvement": 0.0021835974984181217
+    },
+    {
+      "n_features": 25,
+      "f1_mean": 0.8240327475792841,
+      "improvement": 0.0026399001233462505
+    },
+    {
+      "n_features": 28,
+      "f1_mean": 0.8253829715653792,
+      "improvement": 0.0013502239860950782
+    }
+  ]
+}
