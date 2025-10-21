@@ -1,0 +1,14 @@
+backbone_features = [
+    'yules_k',
+    'char_trigram_entropy',
+    'comma_ratio',
+    'content_function_ratio',
+    'verbs_per_100_tok',
+    'sentence_length_std',
+    'type_token_ratio',
+]
+
+extra_backbone_features = [
+    'trigram diversity',
+    'avg_tree_depth'
+]
